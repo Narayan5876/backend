@@ -13,10 +13,10 @@ const productrouter = require('./router/product')
 
 
 app.use(express.json())
-app.use(userrouter)
 
 
-//app.use(taskrouter)
+
+
 
 app.listen(3000);
-//this is our port 
+ 
