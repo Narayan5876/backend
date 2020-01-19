@@ -1,13 +1,13 @@
 const mongoose = require('mongoose')
-const room = mongoose.model('room',{
-   
-        roomname: {
+const hotel= mongoose.model('hotel',{
+ 
+        hotelname: {
             type: String
         },
-        roomtype:{
+        roomavialable:{
             type : String
         },
-        price:{
+        pricepernight:{
             type : String
         },
         description:{
@@ -16,4 +16,4 @@ const room = mongoose.model('room',{
         Image: { type: String, 
             required: true }
     })
-    module.exports = room
+    module.exports = hotel
