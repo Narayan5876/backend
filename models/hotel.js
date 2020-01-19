@@ -7,6 +7,16 @@ const hotel= mongoose.model('hotel',{
         roomavialable:{
             type : String
         },
+        phone:{
+            type:String
+        },
+    
+        address: {
+            type: String
+        },
+        email: {
+            type: String
+        },
         pricepernight:{
             type : String
         },
