@@ -5,14 +5,12 @@ const auth = require('../middleware/auth');
 
 
 router.post("/upload",(req,res)=>{
-    //console.log(req.body)
    var myData = new User(req.body);
    myData.save();
 });
 
-//get ko lagi code
-router.get('/user',function(req,res){ //without auth 
-   // router.get('/user',auth,function(req,res){
+
+router.get('/user',function(req,res){ 
     User.find().then(function(user_data){
         res.send(user_data);
 
@@ -23,8 +21,7 @@ router.get('/user',function(req,res){ //without auth
         
     });
 })
-//yaha sama  get ko code 
-// this is for the admin
+
 router.get('/admin_dashboard',auth,function(req,res){
     user_type = req.user_type
     if(user_type=="admin"){
@@ -35,7 +32,7 @@ router.get('/admin_dashboard',auth,function(req,res){
     }
     
     })
-    // this is for the user
+
 router.get('/user_dashboard',auth,function(req,res){
     user_type = req.user_type
     if(user_type=="user"){
@@ -53,7 +50,7 @@ router.get('/user_dashboard',auth,function(req,res){
     })
 
 
-//yaha bata taltira delete ko 
+
 router.delete('/del/:id',function(req,res){
     User.findByIdAndDelete(req.params.id).then(function(){
 

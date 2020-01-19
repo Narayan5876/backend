@@ -1,4 +1,4 @@
-//middleware vhaneko kai kam garnu vhandha agadi garni kam ho.
+
 const jwt = require('jsonwebtoken')
 const User = require('../models/user')
 const auth = async (req, res, next) => {
