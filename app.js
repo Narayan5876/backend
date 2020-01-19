@@ -4,15 +4,25 @@ const app = express()
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({extended:false}))
 const userrouter = require('./router/user')
+
 const cors = require('cors')
 app.use(cors())
-const productrouter = require('./router/product')
+const roomrouter = require('./router/room')
+const hotelrouter = require('./router/hotel')
+const queryrouter = require('./router/query')
+const reservationrouter = require('./router/reservation')
 
 
 
 
 
 app.use(express.json())
+app.use(userrouter)
+app.use(roomrouter)
+app.use(hotelrouter)
+app.use(queryrouter)
+app.use(reservationrouter)
+app.use(cors)
 
 
 
