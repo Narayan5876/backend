@@ -38,7 +38,7 @@ router.post("/room",upload.single('Image'),(req,res)=>{
 
 
 router.get('/getroom',function(req,res){
-    hotel.find().then(function(user_data){
+    room.find().then(function(user_data){
         res.send(user_data);
 
     
