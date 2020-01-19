@@ -1,5 +1,5 @@
 const express = require('express')
-const room = require('../models/room')
+const hotel = require('../models/hotel')
 const router = new express.Router()
 
 const multer = require('multer');
@@ -30,14 +30,14 @@ const upload = multer({
 });
 
 
-router.post("/room",upload.single('Image'),(req,res)=>{
+router.post("/hotel",upload.single('Image'),(req,res)=>{
    
-   var myData = new room(req.body);
+   var myData = new hotel(req.body);
    myData.save();
 });
 
 
-router.get('/getroom',function(req,res){
+router.get('/gethotel',function(req,res){
     hotel.find().then(function(user_data){
         res.send(user_data);
 
@@ -52,8 +52,8 @@ router.get('/getroom',function(req,res){
 
 
 
-router.delete('/delroom/:id',function(req,res){
-    room.findByIdAndDelete(req.params.id).then(function(){
+router.delete('/delhotel/:id',function(req,res){
+    hotel.findByIdAndDelete(req.params.id).then(function(){
 
     }).catch(function(){
         res.send(e)
@@ -62,8 +62,8 @@ router.delete('/delroom/:id',function(req,res){
     
 });
 
-router.put('/updateroom/:id',function(req,res){
-    room.findOneAndUpdate({_id :req.params.id},req.body).then(function(){
+router.put('/updatehotel/:id',function(req,res){
+    hotel.findOneAndUpdate({_id :req.params.id},req.body).then(function(){
         res.send("updated")
     }).catch(function(e){
         res.send(e)
