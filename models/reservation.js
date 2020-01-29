@@ -22,7 +22,7 @@ const reservation = mongoose.model('reservation',{
          noofadult: { type: String, 
             required: true },
 
-         cchildren: { type: String, 
+         children: { type: String, 
              required: true },
         
         roomtype: { type: String, 

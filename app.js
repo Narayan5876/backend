@@ -13,10 +13,10 @@ const queryrouter = require('./router/query')
 const reservationrouter = require('./router/reservation')
 
 
-
-
-
 app.use(express.json())
+app.use((req,res,next)=>{
+    next();
+})
 app.use(userrouter)
 app.use(roomrouter)
 app.use(hotelrouter)
@@ -28,5 +28,8 @@ app.use(cors)
 
 
 
-app.listen(3000);
+
+app.listen(4000,()=>{
+    console.log("server is running");
+});
  
