@@ -74,6 +74,7 @@ router.post("/login22", async function (req, res) {
     try {
         const user = await User.checkCrediantialsDb(req.body.email, req.body.password)
         const token =await user.generateAuthToken();
+        res.send({user,token});
         if(user !=null){
                 res.json({
                     message: "login success",
