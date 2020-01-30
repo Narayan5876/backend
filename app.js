@@ -17,6 +17,7 @@ app.use(express.json())
 app.use((req,res,next)=>{
     next();
 })
+app.use("/public", express.static(__dirname + '/public/'))
 app.use(userrouter)
 app.use(roomrouter)
 app.use(hotelrouter)

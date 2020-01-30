@@ -4,21 +4,21 @@ const router = new express.Router()
 const auth = require('../middleware/auth');
 
 
-router.post("/upload", (req, res) => {
+router.post("/register", (req, res) => {
+    console.log(req.body)
     var myData = new User(req.body);
     myData.save();
 });
 
-
-router.get('/user', function (req, res) {
-    User.find().then(function (user_data) {
+router.get('/user',function(req,res){
+    User.find().then(function(user_data){
         res.send(user_data);
 
-
-    }).catch(function (e) {
-
-        res.send(e)
-
+    
+}).catch(function(e){
+    
+            res.send(e)
+        
     });
 })
 
@@ -72,13 +72,16 @@ router.put('/update/:id', function (req, res) {
 })
 router.post("/login22", async function (req, res) {
     try {
+        console.log(req.body)
         const user = await User.checkCrediantialsDb(req.body.email, req.body.password)
         const token =await user.generateAuthToken();
-        res.send({user,token});
+   
         if(user !=null){
                 res.json({
                     message: "login success",
                     status: "true",
+                    email: user.email,
+                    fullname:user.fullname,
                     user_type:user.user_type,
                     newtoken:token
                 })
@@ -104,6 +107,20 @@ router.get('/users/single/:id', function(req,res){
     });
 })
 
+router.post('/logout',auth , async(req,res)=> {
+    try{
+        req.user.tokens = res.user.tokens.filter((token)=>{
+        return token.token !== req.token
+    })
+    await req.user.save()
+    res.send()
+}
+catch (e) {
+    res.status(500).send
+}
+    
+
+})
 
 
 module.exports = router
