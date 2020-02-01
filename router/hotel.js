@@ -49,7 +49,18 @@ router.get('/gethotel',function(req,res){
     });
 })
 
+router.post('/viewhotel',function(req,res){
+  console.log(req.body)
+  room.findById(req.body.roomid).then(function(user_data){
+      res.send(user_data);
 
+  
+}).catch(function(e){
+  
+          res.send(e)
+      
+  });
+})
 
 
 router.delete('/delhotel/:id',function(req,res){

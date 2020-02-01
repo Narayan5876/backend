@@ -49,6 +49,19 @@ router.get('/getroom',function(req,res){
     });
 })
 
+router.post('/viewrooom',function(req,res){
+  console.log(req.body)
+  room.findById(req.body.roomid).then(function(user_data){
+      res.send(user_data);
+
+  
+}).catch(function(e){
+  
+          res.send(e)
+      
+  });
+})
+
 
 
 
