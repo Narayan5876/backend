@@ -1,31 +1,27 @@
 {
-  "name": "Hotel-finder-and-room-reservation-backend",
+  "name": "testing",
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
+  "directories": {
+    "test": "test"
+  },
   "dependencies": {
+    "axios": "^0.19.0",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
-    "express": "^4.17.1",
+    "express": "^4.17.0",
+    "jest": "^24.8.0",
     "jsonwebtoken": "^8.5.1",
-    "middleware": "^1.0.0",
-    "mongoose": "^5.8.9",
-    "multer": "^1.4.2"
+    "mongoose": "^5.5.9",
+    "multer": "^1.4.1",
+    "path": "^0.12.7",
+    "supertest": "^4.0.2"
   },
   "devDependencies": {},
   "scripts": {
-    "application":"nodemon app.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/softwarica-github/t2-backend-api-Narayan5876.git"
-  },
-  "keywords": [],
   "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/softwarica-github/t2-backend-api-Narayan5876/issues"
-  },
-  "homepage": "https://github.com/softwarica-github/t2-backend-api-Narayan5876#readme"
+  "license": "ISC"
 }

@@ -4,6 +4,10 @@ const hotel= mongoose.model('hotel',{
         hotelname: {
             type: String
         },
+        hoteltype :{
+            type: String
+
+        },
         roomavialable:{
             type : String
         },

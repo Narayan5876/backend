@@ -2,14 +2,19 @@ const express = require('express')
 const hotel = require('../models/hotel')
 const router = new express.Router()
 
+const path = require('path');
 const multer = require('multer');
+const app = express();
+
+app.use(express.static(path.join(__dirname, "public/images")))
+
 
 const storage = multer.diskStorage({
-  destination: function(req, file, cb) {
-    cb(null, './uploads/');
-  },
+  destination:"public/images",
   filename: function(req, file, cb) {
-    cb(null, new Date().toISOString() + file.originalname);
+    const ext = path.extname(file.originalname)
+    cb(null, Date.now() + "_hotelpic" + ext);
+    //cb(null, "hello" + ext)
   }
 });
 
@@ -51,7 +56,7 @@ router.get('/gethotel',function(req,res){
 
 router.post('/viewhotel',function(req,res){
   console.log(req.body)
-  room.findById(req.body.roomid).then(function(user_data){
+  hotel.findById(req.body.hotelid).then(function(user_data){
       res.send(user_data);
 
   

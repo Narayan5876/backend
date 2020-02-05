@@ -1,15 +1,19 @@
 const express = require('express')
 const room = require('../models/room')
 const router = new express.Router()
-
+const path = require('path');
 const multer = require('multer');
+const app = express();
+
+app.use(express.static(path.join(__dirname, "public/images")))
+
 
 const storage = multer.diskStorage({
-  destination: function(req, file, cb) {
-    cb(null, './public/images/');
-  },
+  destination:"public/images",
   filename: function(req, file, cb) {
-    cb(null, new Date().toISOString() + file.originalname);
+    const ext = path.extname(file.originalname)
+    cb(null, Date.now() + "_roompicture" + ext);
+    //cb(null, "hello" + ext)
   }
 });
 
@@ -35,6 +39,7 @@ router.post("/room",upload.single('Image'),(req,res)=>{
    var myData = new room(req.body);
    myData.save();
 });
+
 
 
 router.get('/getroom',function(req,res){
