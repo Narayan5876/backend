@@ -6,17 +6,20 @@ const path = require('path');
 const multer = require('multer');
 const app = express();
 
-app.use(express.static(path.join(__dirname, "public/images")))
+app.use(express.static(path.join(__dirname, "images")))
 
 
 const storage = multer.diskStorage({
-  destination:"public/images",
+  destination:"images",
   filename: function(req, file, cb) {
     const ext = path.extname(file.originalname)
-    cb(null, Date.now() + "_hotelpic" + ext);
+    cb(null, Date.now() + "hello" + ext);
     //cb(null, "hello" + ext)
   }
 });
+
+
+
 
 const fileFilter = (req, file, cb) => {
   if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/png') {
@@ -42,7 +45,7 @@ router.post("/hotel",upload.single('Image'),(req,res)=>{
 });
 
 
-router.get('/gethotel',function(req,res){
+router.get('/hotel',function(req,res){
     hotel.find().then(function(user_data){
         res.send(user_data);
 
@@ -54,7 +57,7 @@ router.get('/gethotel',function(req,res){
     });
 })
 
-router.post('/viewhotel',function(req,res){
+router.post('/hotel',function(req,res){
   console.log(req.body)
   hotel.findById(req.body.hotelid).then(function(user_data){
       res.send(user_data);
@@ -68,7 +71,7 @@ router.post('/viewhotel',function(req,res){
 })
 
 
-router.delete('/delhotel/:id',function(req,res){
+router.delete('/hotel/:id',function(req,res){
     hotel.findByIdAndDelete(req.params.id).then(function(){
 
     }).catch(function(){
@@ -78,7 +81,7 @@ router.delete('/delhotel/:id',function(req,res){
     
 });
 
-router.put('/updatehotel/:id',function(req,res){
+router.put('/hotel/:id',function(req,res){
     hotel.findOneAndUpdate({_id :req.params.id},req.body).then(function(){
         res.send("updated")
     }).catch(function(e){

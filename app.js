@@ -12,12 +12,12 @@ const hotelrouter = require('./router/hotel')
 const queryrouter = require('./router/query')
 const reservationrouter = require('./router/reservation')
 
-
 app.use(express.json())
 app.use((req,res,next)=>{
     next();
 })
-app.use("/public", express.static(__dirname + '/public/images'))
+app.use("/public", express.static(__dirname + '/public/'))
+
 app.use(userrouter)
 app.use(roomrouter)
 app.use(hotelrouter)

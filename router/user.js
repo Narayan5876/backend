@@ -70,7 +70,8 @@ router.put('/update/:id', function (req, res) {
 
     })
 })
-router.post("/login22", async function (req, res) {
+
+router.post("/login22",async function (req, res) {
     try {
         console.log(req.body)
         const user = await User.checkCrediantialsDb(req.body.email, req.body.password)

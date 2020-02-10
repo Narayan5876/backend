@@ -9,7 +9,7 @@ router.post("/reservation",(req,res)=>{
 });
 
 
-router.get('/getreservation',function(req,res){
+router.get('/reservation',function(req,res){
     reservation.find().then(function(user_data){
         res.send(user_data);
 
@@ -24,7 +24,7 @@ router.get('/getreservation',function(req,res){
 
 
 
-router.delete('/delreservation/:id',function(req,res){
+router.delete('/reservation/:id',function(req,res){
     reservation.findByIdAndDelete(req.params.id).then(function(){
 
     }).catch(function(){
@@ -34,7 +34,7 @@ router.delete('/delreservation/:id',function(req,res){
     
 });
 
-router.put('/updatereservation/:id',function(req,res){
+router.put('/reservation/:id',function(req,res){
     reservation.findOneAndUpdate({_id :req.params.id},req.body).then(function(){
         res.send("updated")
     }).catch(function(e){

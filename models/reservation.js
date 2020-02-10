@@ -7,7 +7,7 @@ const reservation = mongoose.model('reservation',{
         email:{
             type : String
         },
-        address:{
+        phone:{
             type : String
         },
         checkin:{

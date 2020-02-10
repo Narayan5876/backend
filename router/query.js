@@ -9,7 +9,7 @@ router.post("/query",(req,res)=>{
 });
 
 
-router.get('/getquery',function(req,res){
+router.get('/query',function(req,res){
     query.find().then(function(user_data){
         res.send(user_data);
 
@@ -24,7 +24,7 @@ router.get('/getquery',function(req,res){
 
 
 
-router.delete('/delquery/:id',function(req,res){
+router.delete('/query/:id',function(req,res){
     query.findByIdAndDelete(req.params.id).then(function(){
 
     }).catch(function(){
@@ -34,7 +34,7 @@ router.delete('/delquery/:id',function(req,res){
     
 });
 
-router.put('/updatequery/:id',function(req,res){
+router.put('/query/:id',function(req,res){
     query.findOneAndUpdate({_id :req.params.id},req.body).then(function(){
         res.send("updated")
     }).catch(function(e){
