@@ -16,44 +16,44 @@ afterAll(async () => {
 
 describe('hotel Schema test anything', () => {
 //the code below is for insert testing
-    // it('Add hotel testing anything', () => {
-    //     const hotels = {
-    //         'hotelname':'sangrila',
-    //         'hoteltype':'5star',
-    //         'roomavialable':'yes',
-    //         'phone':'9849',
-    //         'address': 'ktm',
-    //         'email':'s@gmail.com',
-    //         'pricepernight':'20$',
-    //         'description':'abc',
-    //         'Image':'a.jpg'
+    it('Add hotel testing anything', () => {
+        const hotels = {
+            'hotelname':'sangrila',
+            'hoteltype':'5star',
+            'roomavialable':'yes',
+            'phone':'9849',
+            'address': 'ktm',
+            'email':'s@gmail.com',
+            'pricepernight':'20$',
+            'description':'abc',
+            'Image':'a.jpg'
             
 
             
             
-    //     };
+        };
         
-    //     return hotel.create(hotels)
-    //         .then((pro_ret) => {
-    //             expect(pro_ret.hotelname).toEqual('sangrila');
-    //             expect(pro_ret.hoteltype).toEqual('5star');
-    //             expect(pro_ret.roomavialable).toEqual('yes');
-    //             expect(pro_ret.phone).toEqual('9849');
-    //             expect(pro_ret.address).toEqual('ktm');
-    //             expect(pro_ret.email).toEqual('s@gmail.com');
-    //             expect(pro_ret.pricepernight).toEqual('20$');
-    //             expect(pro_ret.description).toEqual('abc');
-    //             expect(pro_ret.Image).toEqual('a.jpg');
+        return hotel.create(hotels)
+            .then((pro_ret) => {
+                expect(pro_ret.hotelname).toEqual('sangrila');
+                expect(pro_ret.hoteltype).toEqual('5star');
+                expect(pro_ret.roomavialable).toEqual('yes');
+                expect(pro_ret.phone).toEqual('9849');
+                expect(pro_ret.address).toEqual('ktm');
+                expect(pro_ret.email).toEqual('s@gmail.com');
+                expect(pro_ret.pricepernight).toEqual('20$');
+                expect(pro_ret.description).toEqual('abc');
+                expect(pro_ret.Image).toEqual('a.jpg');
               
-    //         });
-    // });
+            });
+    });
 
     
 //the code below is for delete testing
-//     it('to test the delete product is working or not', async () => {
-//         const status = await reservation.deleteMany();
-//         expect(status.ok).toBe(1);
-// });
+    it('to test the delete product is working or not', async () => {
+        const status = await reservation.deleteMany();
+        expect(status.ok).toBe(1);
+});
 
 
 
