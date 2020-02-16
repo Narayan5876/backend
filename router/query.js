@@ -42,4 +42,12 @@ router.put('/query/:id',function(req,res){
     })
 })
 
+router.get('/query/single/:id', function(req,res){
+    query.findOne({_id :req.params.id}).then(function(user_data){
+        res.send(user_data)
+    }).catch(function(e){
+        res.send(e)
+    });
+  })
+
 module.exports = router

@@ -10,6 +10,7 @@ router.post("/reservation",(req,res)=>{
 
 
 router.get('/reservation',function(req,res){
+    console.log(req.body)
     reservation.find().then(function(user_data){
         res.send(user_data);
 
@@ -41,5 +42,11 @@ router.put('/reservation/:id',function(req,res){
         res.send(e)
     })
 })
-
+router.get('/reservation/single/:id', function(req,res){
+    reservation.findOne({_id :req.params.id}).then(function(user_data){
+        res.send(user_data)
+    }).catch(function(e){
+        res.send(e)
+    });
+  })
 module.exports = router

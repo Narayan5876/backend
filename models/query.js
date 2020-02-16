@@ -7,6 +7,9 @@ const query = mongoose.model('query',{
         email:{
             type : String
         },
+        phone:{
+            type: String
+        },
         query:{
             type : String
         }

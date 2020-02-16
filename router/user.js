@@ -51,7 +51,7 @@ router.get("/admin_dashboard", auth, function () {
 
 
 
-router.delete('/del/:id', function (req, res) {
+router.delete('/user/:id', function (req, res) {
     User.findByIdAndDelete(req.params.id).then(function () {
 
     }).catch(function () {
@@ -61,7 +61,7 @@ router.delete('/del/:id', function (req, res) {
 
 });
 
-router.put('/update/:id', function (req, res) {
+router.put('/user/:id', function (req, res) {
     User.findOneAndUpdate({ _id: req.params.id }, req.body).then(function () {
         res.send("updated")
     }).catch(function (e) {
@@ -71,34 +71,48 @@ router.put('/update/:id', function (req, res) {
     })
 })
 
-router.post("/login22",async function (req, res) {
-    try {
-        console.log(req.body)
-        const user = await User.checkCrediantialsDb(req.body.email, req.body.password)
-        const token =await user.generateAuthToken();
-   
-        if(user !=null){
-                res.json({
-                    message: "login success",
-                    status: "true",
-                    email: user.email,
-                    fullname:user.fullname,
-                    user_type:user.user_type,
-                    newtoken:token
-                })
-            
-        }else{            
-            res.json({
-                message: "not login success",
-                status: "false"
-            })
-        }
-       
-    } catch (error) {
-        res.json(error)
-    }
+// router.post("/login22", async function (req, res) {
+//     try {
+//         console.log(req.body)
+//         const user = await User.checkCrediantialsDb(req.body.email, req.body.password)
+//         const token = await user.generateAuthToken();
+//         res.send({user,token})
 
-})
+//         if (user != null) {
+//             res.json({
+//                 message: "login success",
+//                 status: "true",
+//                 email: user.email,
+//                 fullname: user.fullname,
+//                 user_type: user.user_type,
+//                 newtoken: token,
+//                 _id: user._id
+
+//             })
+//             res.send(user)
+
+//         } else {
+//             res.json({
+//                 message: "not login success",
+//                 status: "false"
+//             })
+//         }
+
+//     } catch (error) {
+//         res.json(error)
+//     }
+
+// })
+
+
+router.post("/login", async function(req, res){
+
+    const user = await User.checkCrediantialsDb(req.body.email,
+   req.body.password)
+    const token = await user.generateAuthToken()
+    res.send({user,token})
+   
+   })
 
 router.get('/users/single/:id', function(req,res){
     User.findOne({_id :req.params.id}).then(function(user_data){

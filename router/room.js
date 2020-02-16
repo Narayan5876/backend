@@ -5,17 +5,18 @@ const path = require('path');
 const multer = require('multer');
 const app = express();
 
-app.use(express.static(path.join(__dirname, "images")))
+app.use(express.static(path.join(__dirname, "public/images")))
 
 
 const storage = multer.diskStorage({
-  destination:"images",
+  destination:"public/images",
   filename: function(req, file, cb) {
     const ext = path.extname(file.originalname)
-    cb(null, Date.now() + "hello" + ext);
+    cb(null, Date.now() + "Roompic" + ext);
     //cb(null, "hello" + ext)
   }
 });
+
 
 
 
@@ -30,15 +31,21 @@ const fileFilter = (req, file, cb) => {
 const upload = multer({
   storage: storage,
   limits: {
-    fileSize: 1024 * 1024 * 5
-  },
-  fileFilter: fileFilter
+    fileSize: 100000000000000000000
+  }
 });
 
 
-router.post("/room",upload.single('Image'),(req,res)=>{
-   console.log(req.body)
-   var myData = new room(req.body);
+router.post("/room",upload.single('Img'),(req,res)=>{
+   //console.log(req.body)
+   var myData = new room({
+    roomaddress: req.body.roomaddress,
+    roomtype:req.body.roomtype,
+    roomavialable:req.body.roomavailable,
+    price:req.body.price,
+    description:req.body.description,
+    Image:req.file.filename
+   });
    myData.save();
 });
 
@@ -56,7 +63,22 @@ router.get('/room',function(req,res){
     });
 })
 
-router.post('/rooom',function(req,res){
+
+
+
+router.get('/room/:id',function(req,res){
+  room.find({uid:req.params.id}).then(function(user_data){
+      res.send(user_data);
+
+  
+}).catch(function(e){
+  
+          res.send(e)
+      
+  });
+})
+
+router.post('/viewrooom',function(req,res){
   console.log(req.body)
   room.findById(req.body.roomid).then(function(user_data){
       res.send(user_data);
@@ -68,7 +90,6 @@ router.post('/rooom',function(req,res){
       
   });
 })
-
 
 
 
@@ -88,6 +109,14 @@ router.put('/room/:id',function(req,res){
     }).catch(function(e){
         res.send(e)
     })
+})
+
+router.get('/room/single/:id', function(req,res){
+  room.findOne({_id :req.params.id}).then(function(user_data){
+      res.send(user_data)
+  }).catch(function(e){
+      res.send(e)
+  });
 })
 
 module.exports = router

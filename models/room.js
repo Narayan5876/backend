@@ -1,11 +1,14 @@
 const mongoose = require('mongoose')
 const room = mongoose.model('room',{
    
-        roomname: {
+        roomaddress: {
             type: String
         },
         roomtype:{
             type : String
+        },
+        roomavialable:{
+            type:String
         },
         price:{
             type : String
