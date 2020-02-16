@@ -19,7 +19,9 @@ describe('user Schema test anything', () => {
     it('Add user testing anything', () => {
         const users = {
             'fullname': 'narayan',
-            'email':'naran@gmail.com'
+            'email':'naran@gmail.com',
+            'phone':'12',
+            'address':'ktm'
             
             
         };
@@ -28,30 +30,34 @@ describe('user Schema test anything', () => {
             .then((pro_ret) => {
                 expect(pro_ret.fullname).toEqual('narayan');
                 expect(pro_ret.email).toEqual('naran@gmail.com');
+                expect(pro_ret.phone).toEqual('12');
+                expect(pro_ret.address).toEqual('ktm');
             });
     });
 
     
 //the code below is for delete testing
-//     it('to test the delete product is working or not', async () => {
-//         const status = await user.deleteMany();
-//         expect(status.ok).toBe(1);
-// });
+    it('to test the delete product is working or not', async () => {
+        const status = await user.deleteMany();
+        expect(status.ok).toBe(1);
+});
 
 
 
 
+//update testing
 
+ it('to test the update', async () => {
 
-//  it('to test the update', async () => {
-
-//     return user.findOneAndUpdate({_id :Object('5e391005689b62e719a1e394')}, {$set : {fullname:'ram',email:'naran@1gmail.com'}})
-//     .then((pp)=>{
-//         expect(pp.fullname).toEqual('ram')
-//         expect(pp.email).toEqual('naran@1gmail.com')
-//     })
+    return user.findOneAndUpdate({_id :Object('5e391005689b62e719a1e394')}, {$set : {fullname:'ram',email:'naran@1gmail.com',phone:'12',address:'ktm'}})
+    .then((pp)=>{
+        expect(pp.fullname).toEqual('ram')
+        expect(pp.email).toEqual('naran@1gmail.com')
+        expect(pp.phone).toEqual('12')
+        expect(pp.address).toEqual('ktm')
+    })
   
-// });
+});
 
     
  })
