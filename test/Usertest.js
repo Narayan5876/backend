@@ -27,30 +27,31 @@ describe('user Schema test anything', () => {
         return user.create(users)
             .then((pro_ret) => {
                 expect(pro_ret.fullname).toEqual('narayan');
+                expect(pro_ret.email).toEqual('naran@gmail.com');
             });
     });
 
     
 //the code below is for delete testing
-    it('to test the delete product is working or not', async () => {
-        const status = await user.deleteMany();
-        expect(status.ok).toBe(1);
-});
+//     it('to test the delete product is working or not', async () => {
+//         const status = await user.deleteMany();
+//         expect(status.ok).toBe(1);
+// });
 
 
 
 
 
 
- it('to test the update', async () => {
+//  it('to test the update', async () => {
 
-    return user.findOneAndUpdate({_id :Object('5e391005689b62e719a1e394')}, {$set : {fullname:'ram',email:'naran@1gmail.com'}})
-    .then((pp)=>{
-        expect(pp.fullname).toEqual('ram')
-        expect(pp.email).toEqual('naran@1gmail.com')
-    })
+//     return user.findOneAndUpdate({_id :Object('5e391005689b62e719a1e394')}, {$set : {fullname:'ram',email:'naran@1gmail.com'}})
+//     .then((pp)=>{
+//         expect(pp.fullname).toEqual('ram')
+//         expect(pp.email).toEqual('naran@1gmail.com')
+//     })
   
-});
+// });
 
     
  })
