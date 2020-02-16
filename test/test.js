@@ -1,4 +1,4 @@
-const room = require('../models/room');
+const query= require('../models/query');
 const mongoose = require('mongoose');
 // use the new name of the database
 const url = 'mongodb://localhost:27017/hoteltesting'; 
@@ -14,30 +14,28 @@ afterAll(async () => {
     await mongoose.connection.close();
 });
 
-describe('room Schema test anything', () => {
+describe('query Schema test anything', () => {
 //the code below is for insert testing
-    it('Add room testing anything', () => {
-        const rooms = {
-            'roomaddress':'ktm',
-            'roomtype':'5star',
-            'roomavialable':'yes',
-            'price':'20$',
-            'description':'abc',
-            'Image':'a.jpg'
+    it('Add query testing anything', () => {
+        const querys = {
+            'fullname':'a',
+            'email':'2',
+            'phone':'2',
+            'query':'q',
+            
             
 
             
             
         };
         
-        return room.create(rooms)
+        return query.create(querys)
             .then((pro_ret) => {
-                expect(pro_ret.roomaddress).toEqual('ktm');
-                expect(pro_ret.roomtype).toEqual('5star');
-                expect(pro_ret.roomavialable).toEqual('yes');
-                expect(pro_ret.price).toEqual('20$');
-                expect(pro_ret.description).toEqual('abc');
-                expect(pro_ret.Image).toEqual('a.jpg');
+                expect(pro_ret.fullname).toEqual('a');
+                expect(pro_ret.email).toEqual('2');
+                expect(pro_ret.phone).toEqual('2');
+                expect(pro_ret.query).toEqual('q');
+               
               
             });
     });
@@ -53,16 +51,16 @@ describe('room Schema test anything', () => {
 
 
 
- // for update
+ // for update room
  it('to test the update', async () => {
 
-    return room.findOneAndUpdate({_id :Object('5e49065a1f29210ba4715c1e')}, {$set : {roomaddress:'a',roomtype:'a',roomavialable:'No',
-    price:'10$',description:'a',Image:'single.jpg'}})
+    return room.findOneAndUpdate({_id :Object('5e490857c7f27c6b9c308409')}, {$set : {fullname:'a',email:'a',phone:'No',
+    query:'10$'}})
     .then((pp)=>{
-        expect(pp.roomaddress).toEqual('a'),
-        expect(pp.roomtype).toEqual('a'),
-        expect(pp.roomavialable).toEqual('No'),
-        expect(pp.pricepernight).toEqual('10$'),
+        expect(pp.fullname).toEqual('a'),
+        expect(pp.email).toEqual('a'),
+        expect(pp.phone).toEqual('No'),
+        expect(pp.query).toEqual('10$'),
        
         expect(pp.description).toEqual('a'),
         expect(pp.Image).toEqual('single.jpg')
